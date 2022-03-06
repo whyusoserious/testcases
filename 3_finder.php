@@ -31,9 +31,6 @@
         $sql = "SELECT comment.name, comment.body FROM comment WHERE comment.body LIKE '%$input%'";
 
         $result = $conn->query($sql);
-        echo '<pre>';
-        var_dump($result);
-        echo '</pre>';
         unset($_REQUEST['search']);
         if($result ->num_rows>0)
         {
