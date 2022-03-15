@@ -23,15 +23,15 @@
             die("Ошибка подключения: " . $conn->connect_error);
         }
     }
-    $input = $_REQUEST['search'];
-    $_GET['search'] = $input;
+    // var_dump($_REQUEST['search']);
+    $input = $_GET['search'];
 
     if (strlen($input) > 2)
     {
         $sql = "SELECT comment.name, comment.body FROM comment WHERE comment.body LIKE '%$input%'";
 
         $result = $conn->query($sql);
-        unset($_REQUEST['search']);
+        //unset($_REQUEST['search']);
         if($result ->num_rows>0)
         {
             while ($row = $result->fetch_assoc()){
@@ -47,7 +47,7 @@
     else
     {
         echo "Введите минимум 3 символа!";
-        unset($_REQUEST['search']);
+        //unset($_REQUEST['search']);
     }
     
     ?>
